@@ -1,5 +1,5 @@
 # WebApp boilerplate with Next JS
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io#https://github.com/4GeeksAcademy/react-hello-webapp.git)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io#https://github.com/4GeeksAcademy/next-hello-webapp.git)
 
 <p align="center">
 <a href="https://www.loom.com/share/f37c6838b3f1496c95111e515e83dd9b"><img src="docs/how-to.png?raw=true" /></a>
