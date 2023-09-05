@@ -1,6 +1,10 @@
 {
-  "name": "edudy",
-  "version": "0.1.0",
+  "name": "next-hello-webapp",
+  "engines": {
+		"node": "18.x"
+	},
+	"version": "1.0.0",
+	"description": "WebApp boilerplate with Next JS",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -8,11 +12,34 @@
     "start": "next start",
     "lint": "next lint"
   },
+	"author": {
+		"name": "Alejandro Sanchez",
+		"url": "http://alesanchezr.com/"
+	},
+	"contributors": [
+		{
+			"name": "Alejandro Sanchez",
+			"url": "http://alesanchezr.com/"
+		},
+		{
+			"name": "Ignacio Cordoba",
+			"url": "http://github.com/nachovz"
+		},
+    {
+			"name": "Alexis Peña",
+			"url": "http://github.com/aleperix"
+		}
+	],
+	"license": "ISC",
   "dependencies": {
+    "bootstrap-scss": "5.3.1",
     "eslint": "8.48.0",
     "eslint-config-next": "13.4.19",
     "next": "13.4.19",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-bootstrap": "2.8.0",
+    "react-dom": "18.2.0",
+    "sass": "1.66.1",
+    "sharp": "0.32.5"
   }
 }

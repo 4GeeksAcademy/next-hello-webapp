@@ -1,34 +1,96 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# WebApp boilerplate with Next JS
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io#https://github.com/4GeeksAcademy/react-hello-webapp.git)
 
-## Getting Started
+<p align="center">
+<a href="https://www.loom.com/share/f37c6838b3f1496c95111e515e83dd9b"><img src="docs/how-to.png?raw=true" /></a>
+</p>
 
-First, run the development server:
+
+### Requirements:
+- Make sure you are using node version 18
+
+1. Install the packages:
+```
+$ pnpm install
+```
+2. Create a .env.local file:
+```
+$ cp .env.local.example .env.local
+```
+3. Start coding! and the webpack dev server with live reload, for Windows, Mac, Linux, Gitpod or Codespaces:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+$ pnpm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Styles
+You can update the `styles/index.css` or create new `.css` files inside `styles/` and import them into your current scss or js files depending on your needs.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Components
+Add more files into your `./src/components` or styles folder as you need them and import them into your current files as needed.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+**Note (New changes)**: Components have been converted into functions to support the use of hooks:
+* Instead of a class component, we're using a `const` function.
+* Class `constructor` and `state` have been replaced by `useState()` hooks.
+* `componentDidMount()` was replaced by `useEffect({}, [])` - It runs at mount thanks to the second parameter (`[]`).
+* `Actions` and `Store` still work the same way.
 
-## Learn More
+```jsx
+// Previous "Class Oriented"
+export class Demo extends React.Component {
+	constructor(props) {
+		super(props);
 
-To learn more about Next.js, take a look at the following resources:
+		this.state = getState('code here');
+	}
+}
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+// New "Functional Oriented"
+export const Demo = () => (
+	const [state, setState] = getState('code here'); //using the state (if needed)
+  const { store, actions } = useContext(Context); // using the context (if needed)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+);
+```
 
-## Deploy on Vercel
+💡Note: There is an example using the Context API inside `./src/app/demo/page.js`;
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Pages (Components)
+Add more folders with a `page.js` file into your `./src/app`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Context
+This boilerplate comes with a centralized general Context API. The file `./src/context/flux.js` has a base structure for the store, we encourage you to change it and adapt it to your needs.
+
+React Context [docs](https://reactjs.org/docs/context.html)
+BreathCode Lesson [view](https://content.breatheco.de/lesson/react-hooks-explained)
+
+The `Provider` is already set. You can consume from any component using the useContext hook to get the `store` and `actions` from the Context. Check `src/app/demo/app.js` to see a demo.
+
+```jsx
+import { Context } from "@/context/appContext";
+const MyComponentSuper = () => {
+  //here you use useContext to get store and actions
+  const { store, actions } = useContext(Context);
+  return <div>{/* you can use your actions or store inside the html */}</div>
+}
+```
+
+## Publish your website!
+
+1. **Vercel:** The FREE recomended hosting provider is [vercel.com](https://vercel.com/), you can deploy in 1 minutes by typing the following 2 commands:
+
+Login (you need to have an account):
+```sh
+$ pnpm i vercel -g && vercel login
+```
+Deploy:
+```sh
+$ vercel --prod
+```
+✎ Note: If you don't have an account just go to vercel.com, create a account and come back here.
+
+![Vercel example procedure to deploy](docs/deploy.png)
+
+## Contributors
+
+This template was built as part of the 4Geeks Academy [Coding Bootcamp](https://4geeksacademy.com/us/coding-bootcamp) by [Alejandro Sanchez](https://twitter.com/alesanchezr), [Alexis Peña](https://linkedin.com/in/aleperix) and many other contributors. Find out more about our [Full Stack Developer Course](https://4geeksacademy.com/us/coding-bootcamps/part-time-full-stack-developer), and [Data Science Bootcamp](https://4geeksacademy.com/us/coding-bootcamps/datascience-machine-learning).
